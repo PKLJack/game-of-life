@@ -17,8 +17,7 @@ export default function Footer(props) {
   return (
     <footer>
       Made by &nbsp;
-      <a href="https://github.com/PKLJack">{GithubLogo} PKLJack</a> (with
-      React)
+      <a href="https://github.com/PKLJack">{GithubLogo} PKLJack</a> (with React)
     </footer>
   )
 }

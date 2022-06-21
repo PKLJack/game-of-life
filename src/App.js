@@ -1,10 +1,10 @@
 import "./App.css"
 
 import React, { useEffect, useState } from "react"
-import Tile from "./components/Tile"
-import Controls from "./components/Controls"
 import AboutModal from "./components/AboutModal"
+import Controls from "./components/Controls"
 import Footer from "./components/Footer"
+import Tile from "./components/Tile"
 
 function newTiles(rows, columns, random = false) {
   const newArr = Array(rows)
@@ -27,28 +27,15 @@ function generate(tiles, row, col, nrows, ncols) {
       if (row + r < 0 || row + r >= nrows) continue
       if (col + c < 0 || col + r >= ncols) continue
 
-      // console.log("checking", r, c)
       total += tiles[row + r][col + c]
     }
   }
 
-  // console.log(`${row} ${col} : ${total}`)
   if (tiles[row][col] && 2 <= total && total <= 3) return true
   if (!tiles[row][col] && total === 3) return true
 
   return false
 }
-
-// function AboutModal(props) {
-//   return (
-//     <ReactModal
-//       isOpen={props.handleAbout}
-//     >
-//       <button onClick={handleAbout}>X</button>
-//       <p>Hi</p>
-//     </ReactModal>
-//   )
-// }
 
 function App() {
   console.log("App reload")
@@ -88,8 +75,6 @@ function App() {
       newTiles[row][column] = !newTiles[row][column]
       return newTiles
     })
-
-    // localStorage.setItem("tiles", JSON.stringify(tiles))
   }
 
   function handleNext() {
@@ -99,7 +84,6 @@ function App() {
       for (let row = 0; row < prevTiles.length; row++) {
         newTiles.push([])
         for (let col = 0; col < prevTiles[row].length; col++) {
-          // const xxx = prevTiles[row][col]
           const xxx = generate(prevTiles, row, col, ROWS, COLUMNS)
           newTiles[row].push(xxx)
         }
@@ -109,14 +93,10 @@ function App() {
   }
 
   function handlePlay() {
-    // if (timer) return
-    // setTimer(window.setInterval(handleNext, 1000))
     setIsPlaying(true)
   }
 
   function handlePause() {
-    // window.clearInterval(timer)
-    // setTimer(null)
     setIsPlaying(false)
   }
 
@@ -135,7 +115,6 @@ function App() {
   }
 
   /*  */
-
   const tileElements = tiles.map((obj1, idx1) =>
     obj1.map((obj2, idx2) => (
       <Tile
